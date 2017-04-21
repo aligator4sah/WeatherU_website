@@ -88,7 +88,7 @@
 													//send header to social page
 													$getcitydata = "SELECT c.cityID AS cityid, c.cityName AS cityname, c.state AS state, c.population AS pop, c.area AS area, c.mID AS mid
                                                                     FROM db_project.city c, db_project.employee e
-                                                                    WHERE c.mID = e.eID AND c.mID = \"$eid\";";
+                                                                    WHERE c.cityID = e.cityID AND e.eID = \"$eid\";";
 													
 													$resdata = $conn->query($getcitydata);
 													$rowdata = $resdata->fetch_assoc();

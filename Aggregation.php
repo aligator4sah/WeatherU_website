@@ -107,21 +107,31 @@
 												$dateto = $rowdatecheckto["date"];
 												if($date == $wdate && $dateto == $wdateto){
 													//send header to social page
-													$getsunny  = "SELECT c.cityName as city, count(wt.wtType) as Days, wt.wtType as wtype
-                                                                  FROM db_project.weather w, db_project.city c, db_project.wt, db_project.exwt e
+													$getsunny  = "SELECT c.cityName as city, count(wt.wtType) as Days, wt.wtType as wtype, MAX(w.tMax) AS tmax, MIN(w.tMin) AS tmin, AVG(w.windSpeed) AS winds
+                                                                  FROM db_project.weather w, db_project.city c, db_project.wt wt, db_project.exwt e
                                                                   WHERE w.cityID = c.cityID AND w.wtID = wt.wtID AND w.exwtID = e.exwtID AND cityName = \"$wcity\" AND w.date BETWEEN \"$wdate\" AND \"$wdateto\"
-                                                                  Group by c.cityName, wt.wtType;";
+                                                                  GROUP BY c.cityName, wt.wtType;";
 																  
 													$resdata = $conn->query($getsunny);
 													while($rowdata = $resdata->fetch_assoc()){
 													$city = $rowdata["city"];
 													$Days = $rowdata["Days"];
 													$Type = $rowdata["wtype"];
+													$tmax = $rowdata["tmax"];
+													$tmin = $rowdata["tmin"];
+													$winds = $rowdata["winds"];
 													
 													echo "<div class=\"row\">";
 													//echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">CITY: $city</p></div>";
 													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">Weather Type : $Type</p></div>";
 													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">DAYS : $Days</p></div>";
+													echo "</div>";
+													echo "<div class=\"row\">";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">Max Temp : $tmax</div>";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">Min Temp: $tmin</div>";
+													echo "</div>";
+													echo "<div class=\"row\">";
+												    echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">Average Wind Speed: $winds</div>";
 													
 													echo "</div>";
 												

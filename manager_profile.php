@@ -98,9 +98,9 @@
 												$pass = $rowpasscheck["password"];
 												if($pass == $pwd){
 													//send header to social page
-													$getuserdata = "SELECT e.eID as eID, e.firstName as firstname, e.lastName as lastname, e.title as title, c.cityName as city, e.email as email, e.gender as gender, e.salary as salary, e.address as address, e.zip as zip, e.password as pws, m.phone as phone
-                                                                    FROM db_project.employee e, db_project.city c, db_project.manager m
-                                                                    WHERE c.mID = e.eID AND e.eID = m.mID AND eID = \"$eid\" AND password = \"$pwd\";";
+													$getuserdata = "SELECT e.eID as eID, e.firstName as firstname, e.lastName as lastname, e.title as title, e.cityID as city, e.email as email, e.gender as gender, e.salary as salary, e.address as address, e.zip as zip, e.password as pws, m.phone as phone
+                                                                    FROM db_project.employee e, db_project.manager m
+                                                                    WHERE e.eID = m.mID AND eID = \"$eid\" AND password = \"$pwd\";";
 													$resdata = $conn->query($getuserdata);
 													$rowdata = $resdata->fetch_assoc();
 													$eid = $rowdata["eID"];
