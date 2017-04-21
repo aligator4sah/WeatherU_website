@@ -70,7 +70,7 @@
 			echo "<main class=\"main-content\">";
 				echo "<div class=\"container\">";
 					echo "<div class=\"breadcrumb\">";
-						echo "<a href=\"index.html\">Home</a>";
+						echo "<a href=\"index.php\">Home</a>";
 						echo "<span>Profile</span>";
 					echo "</div>";
 				echo "</div>";
@@ -105,18 +105,20 @@
 					echo "</div>";
 					echo "<div class=\"row\">";
 					echo "<form action=\"modify.php\" class=\"contact-form\" method=\"POST\">";
-					echo "<div class=\"text-center\">";
+					echo "<div class=\"text-center\" align = \"center\">";
 						echo "<input type = \"hidden\" name = \"uname\" value = \"$uname\">";
 						echo "<input type=\"submit\" name = \"modifySubmit\" value=\"Modify\">";
-					echo "</div>";
+					
 					echo "</form>";
-					echo "<div class=\"text-center\">";
+					echo "</div>";
+					echo "<div class=\"text-center\" align = \"center\">";
 					echo "<form action=\"puser_comment.php\" class=\"contact-form\" method=\"POST\">";
 						echo "<input type = \"hidden\" name = \"uname\" value = \"$uname\">";
 						echo "<input type=\"submit\" name = \"rvcommentSubmit\" value=\"Review Comments\">";
+				   echo "</form>";
 					echo "</div>";
-					echo "</div>";
-					echo "</form>";
+					
+				
 
 				
 									echo "<address>";

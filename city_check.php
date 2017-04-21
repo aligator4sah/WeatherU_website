@@ -68,7 +68,7 @@
 				echo "<div class=\"container\">";
 					echo "<div class=\"breadcrumb\">";
 						echo "<a href=\"index.php\">Home</a>";
-						echo "<span>Manager profile</span>";
+						echo "<span>City Review</span>";
 					echo "</div>";
 				echo "</div>";
 
@@ -77,83 +77,48 @@
 						
 							echo "<div class=\"contact-details\">";
 								
-																
-									if(isset($_POST["managerloginSubmit"])){ //manager sends the input
+									$eid = $_POST["eid"];						
+									if(isset($_POST["citycheckSubmit"])){ //manager sends the input
 										//echo "submit encountered!";
-										if(!isset($_POST["mgrlogin"]) || !isset($_POST["pwd"])){
-											echo "<p> one or more of the fields left unfilled!!. Please re-enter!";
-										}
-										else{
-											$eid = $_POST["mgrlogin"];
-											$pwd = $_POST["pwd"];
-											//check if user id exists
-											$usercheck = "select count(*) from db_project.employee where eID = \"$eid\";";
-											$rescheck = $conn->query($usercheck);
-											$rowcheck = $rescheck->fetch_assoc();
-											$ctr = (int)$rowcheck["count(*)"];
-											if($ctr>0){// meaning user id exists, now check for password
-												$checkpass = "select password from db_project.employee where eID = \"$eid\";";
-												$respasscheck = $conn->query($checkpass);
-												$rowpasscheck = $respasscheck->fetch_assoc();
-												$pass = $rowpasscheck["password"];
-												if($pass == $pwd){
+										    
+					                         
+											//$eid = $_POST["eid"];
+											
+										            
 													//send header to social page
-													$getuserdata = "SELECT e.eID as eID, e.firstName as firstname, e.lastName as lastname, e.title as title, c.cityName as city, e.email as email, e.gender as gender, e.salary as salary, e.address as address, e.zip as zip, e.password as pws, m.phone as phone
-                                                                    FROM db_project.employee e, db_project.city c, db_project.manager m
-                                                                    WHERE c.mID = e.eID AND e.eID = m.mID AND eID = \"$eid\" AND password = \"$pwd\";";
-													$resdata = $conn->query($getuserdata);
-													$rowdata = $resdata->fetch_assoc();
-													$eid = $rowdata["eID"];
-													$fname = $rowdata["firstname"];
-													$lname = $rowdata["lastname"];
-													$title = $rowdata["title"];
-													$city = $rowdata["city"];
-													$email = $rowdata["email"];
-													$gender = $rowdata["gender"];
-													$salary = $rowdata["salary"];
-													$add = $rowdata["address"];
-													$zip = $rowdata["zip"];
-													$phone = $rowdata["phone"];
-													echo "<div class=\"row\">";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">FIRSTNAME : $fname</p></div>";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">LASTNAME: $lname</p></div>";
-													echo "</div>";
-													echo "<div class=\"row\">";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">TITLE : $title</p></div>";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">CITY : $city</p></div>";
-													echo "</div>";
-													echo "<div class=\"row\">";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">EMAIL : $email</p></div>";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">GENDER : $gender</p></div>";
-													echo "<div class=\"row\">";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">SALARY : $salary</p></div>";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">ADDRESS : $add</p></div>";
-													echo "<div class=\"row\">";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">ZIPCODE : $zip</p></div>";
-													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">phone : $phone</p></div>";
-													echo "</div>";
-													echo "<form action=\"emp_modify.php\" class=\"contact-form\" method=\"POST\">";
-													echo "<div class=\"text-center\" align = \"center\">";
-														echo "<input type = \"hidden\" name = \"eid\" value = \"$eid\">";
-														echo "<input type=\"submit\" name = \"modifySubmit\" value=\"Modify\">";
-													echo "</form>";
-													echo "</div>";
-													echo "<form action=\"city_check.php\" class=\"contact-form\" method=\"POST\">";
-													echo "<div class=\"text-center\" align = \"center\">";
-														echo "<input type = \"hidden\" name = \"eid\" value = \"$eid\">";
-														echo "<input type=\"submit\" name = \"citycheckSubmit\" value=\"City Check\">";
+													$getcitydata = "SELECT c.cityID AS cityid, c.cityName AS cityname, c.state AS state, c.population AS pop, c.area AS area, c.mID AS mid
+                                                                    FROM db_project.city c, db_project.employee e
+                                                                    WHERE c.mID = e.eID AND c.mID = \"$eid\";";
 													
+													$resdata = $conn->query($getcitydata);
+													$rowdata = $resdata->fetch_assoc();
+													
+			                                        $cityid = $rowdata["cityid"];
+			                                        $cityname = $rowdata["cityname"];
+			                                        $state = $rowdata["state"];
+			                                        $pop = $rowdata["pop"];
+			                                        $area = $rowdata["area"];
+			                                        $mid = $rowdata["mid"];
+													echo "<div class=\"row\">";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">CITYID : $cityid</p></div>";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">CITYNAME: $cityname</p></div>";
+													echo "</div>";
+													echo "<div class=\"row\">";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">STATE : $state</p></div>";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">POPULATION : $pop</p></div>";
+													echo "</div>";
+													echo "<div class=\"row\">";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">AREA : $area</p></div>";
+													echo "<div class=\"col-md-6\" ><p align =\"center\" style = \"padding:10px 0px 10px 0px\">MANAGER ID : $mid</p></div>";
+													echo "</div>";
+													echo "<form action=\"updatecity.php\" class=\"contact-form\" method=\"POST\">";
+													echo "<div class=\"text-right\" align = \"center\">";
+														echo "<input type = \"hidden\" name = \"cityid\" value = \"$cityid\">";
+														echo "<input type=\"submit\" name = \"updatecitySubmit\" value=\"Update City\">";
 													echo "</form>";
 													echo "</div>";
-												}
-												else{
-													echo "Wrong Password!!!! Try again<br>";
-												}
-											}
-											else{
-												echo "EmployeeID $eid does not exist!!. Enter a valid EID!<br>";
-											}
-										}
+												
+										
 									}
 										
 								

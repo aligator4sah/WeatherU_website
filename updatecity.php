@@ -68,7 +68,7 @@
 				echo "<div class=\"container\">";
 					echo "<div class=\"breadcrumb\">";
 						echo "<a href=\"index.php\">Home</a>";
-						echo "<span>Review Weather</span>";
+						echo "<span>Update Weather</span>";
 					echo "</div>";
 				echo "</div>";
 
@@ -77,12 +77,9 @@
 						
 							echo "<div class=\"contact-details\">";
                             echo "<div class=\"row\">";
-                            $eid = "";
+                            $cid = $_POST["cityid"];
                                 if(isset($_POST["updatecitysubmit"])){
-                                    $cid = $_POST["cid"];
-                                    $cname = $_POST["cname"];
-                                    $cstate = $_POST["cstate"];
-                                    $mid = $_POST["mid"];
+                                    
 									//$dt = $_POST["dt"];
 									echo "<div class=\"row\">";
                                     echo "<p align =\"center\" style = \"padding:10px 0px 10px 0px\">Enter details for city: $cid</p>";
@@ -124,12 +121,12 @@
                 }
                 else{
 					$cid = $_POST["cid"];
-					$cname = $_POST["cname"];
+					//$cname = $_POST["cname"];
 					//echo "<br>Employee ID: $eid<br>";
-					$cstate = $_POST["cstate"];
+					//$cstate = $_POST["cstate"];
                     $pop = (float)$_POST["pop"];
                     $area = (float)$_POST["area"];
-                    $mid = $_POST["mid"];
+                    //$mid = $_POST["mid"];
                     //$tmin = (int)$_POST["tmin"];
                     //$winds = (float)$_POST["winds"];
 					//$windd = (int)$_POST["windd"];

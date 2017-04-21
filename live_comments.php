@@ -73,7 +73,7 @@ if(isset($_SESSION['user']) || isset($_SESSION['employee'])){
 									//create connection 
 									$server = "localhost";
 									$usr = "root";
-									$pw = "123";
+									$pw = "12345";
 									$conn = new mysqli($server, $usr, $pw);
 									if($conn->connect_error){
 										die("Connection error - ".$conn->connect_error);

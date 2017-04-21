@@ -65,7 +65,7 @@
 			echo "<main class=\"main-content\">";
 				echo "<div class=\"container\">";
 					echo "<div class=\"breadcrumb\">";
-						echo "<a href=\"index.html\">Home</a>";
+						echo "<a href=\"index.php\">Home</a>";
 						echo "<span>User Comments</span>";
 					echo "</div>";
 				echo "</div>";

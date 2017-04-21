@@ -55,9 +55,9 @@
 							echo "<li class=\"menu-item\"><a href=\"index.php\">Home</a></li>";
 							echo "<li class=\"menu-item\"><a href=\"weather_summary.php\">Weather Summary</a></li>";
 							echo "<li class=\"menu-item\"><a href=\"live_comments.php\">Live comments</a></li>";
-							echo "<li class=\"menu-item\"><a href=\"photos.html\">Profile</a></li>";
-							echo "<li class=\"menu-item current-menu-item\"><a href=\"contact.html\">Register/Sign in</a></li>";
-							echo "<li class=\"menu-item\"><a href=\"employee.html\">Employee</a></li>";
+							echo "<li class=\"menu-item\"><a href=\"profile.php\">Profile</a></li>";
+							echo "<li class=\"menu-item current-menu-item\"><a href=\"register5.php\">Register/Sign in</a></li>";
+							echo "<li class=\"menu-item\"><a href=\"employee.php\">Employee</a></li>";
 						echo "</ul> ";
 					echo "</div>";
 

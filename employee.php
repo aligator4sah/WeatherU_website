@@ -39,7 +39,7 @@
 						<ul class="menu">
 							<li class="menu-item"><a href="index.php">Home</a></li>
 							<li class="menu-item"><a href="weather_summary.php">Weather Summary</a></li>
-							<li class="menu-item"><a href="live-comments.html">Live comments</a></li>
+							<li class="menu-item"><a href="live-comments.php">Live comments</a></li>
 							<li class="menu-item"><a href="profile.html">Profile</a></li>
 							<li class="menu-item"><a href="register5.php">Register/Sign in</a></li>
 							<li class="menu-item current-menu-item"><a href="employee.html">Employee</a></li>
